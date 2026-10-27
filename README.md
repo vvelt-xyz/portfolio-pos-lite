@@ -6,7 +6,7 @@
 
 ## Demo
 
-- 動作 URL: （Cloudflare Pages 初回デプロイ後に記入）
+- 動作 URL: https://portfolio-pos-lite.pages.dev/
 - マニュアル: デモ内 `/manual.html` またはヘッダー「操作マニュアル」
 - Auth: なし（評価者の個人情報は取得しない）
 - データ: ブラウザの `localStorage` のみ
