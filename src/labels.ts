@@ -1,0 +1,20 @@
+export const L = {
+  brand: "WELT POS",
+  demoBadge: "ポートフォリオ用デモ · 設定は閲覧のみ · データはブラウザ内シード",
+  copyright: `© ${new Date().getFullYear()} 株式会社WELT`,
+  tabs: {
+    floor: "フロア",
+    kitchen: "提供",
+    sales: "本日",
+    settings: "設定",
+  },
+  open: "案内する",
+  takeout: "テイクアウト",
+  order: "注文",
+  send: "キッチンへ送る",
+  pay: "会計",
+  served: "提供済み",
+  reset: "デモを初期化",
+  manual: "マニュアル",
+  inspectNote: "Inspect — 保存・変更は無効です（ショーケース方針）",
+} as const;

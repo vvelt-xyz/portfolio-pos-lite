@@ -1,50 +1,65 @@
 # portfolio-pos-lite
 
-小規模飲食向け **Web POS** のコア動線を示すポートフォリオ用デモ。
+**証明一文:** 小規模飲食向け Web POS として、フロア起点の接客と設定の深さが伝わる業務アプリを、WELT ブランドの公開デモで示せる。
 
-本番プロダクト（private）から切り出した **薄いリビルド** です。店舗・顧客データは含みません。
+**帯:** B（現場コア）· **秘匿:** なし  
+切り出し表: [`docs/carve-out.md`](./docs/carve-out.md)
+
+© 株式会社WELT · [vvelt.xyz](https://vvelt.xyz)
 
 ## Demo
 
 - 動作 URL: https://portfolio-pos-lite.pages.dev/
-- マニュアル: デモ内 `/manual.html` またはヘッダー「操作マニュアル」
-- Auth: なし（評価者の個人情報は取得しない）
-- データ: ブラウザの `localStorage` のみ
+- マニュアル: `/manual.html`
+- モード: **Operate**（フロア〜会計） / **Inspect**（設定タブ・保存不可）
+- Auth: なし（個人情報は取らない）
+- データ: ブラウザ `localStorage` ＋架空シード（`WELT Demo Kitchen`）
 
-### デモ手順（最短）
+### Operate（最短）
 
-1. フロアで空席を選ぶ →「案内」
-2. メニューを追加 →「キッチンへ送る」
-3. 「提供」タブで提供済み
-4. 接客中席を開き「会計」
+1. 空席を選ぶ → 人数を入れて「案内する」（またはテイクアウト）  
+2. メニュー追加 → 必要なら数量／取消 →「キッチンへ送る」  
+3. 「提供」で提供済み  
+4. 接客中席から「会計」→ 支払手段 → 確定  
+
+### 設定で見える項目（Inspect・変更不可）
+
+- 店舗名、標準／軽減税率、端数、税込カタログ  
+- メニューマスター（カテゴリ・税区分）  
+- フロア配置（席・種別・定員・グリッド座標）  
 
 ## スタック
 
-- TypeScript / React 19 / Vite
-- 状態: クライアント完結（サーバなし）
-
-## ローカル起動
+TypeScript / React 19 / Vite。クライアント完結（帯 B。複数端末同期・Firebase は差分表どおり対象外／本番）。
 
 ```bash
 npm install
 npm run dev
-```
-
-```bash
 npm run build
-npm run preview
 ```
 
-## 本番との関係
+## 差分表（本番 `05_POSsystem` との関係）
 
-| | |
+| 本番にある | ショーケース |
 |---|---|
-| 切り出し元 | `05_POSsystem`（private） |
-| このリポ | 公開ショーケース。概念と動線の証明 |
-| 含まない | Firebase、店舗固有設定、印刷、本番ドメインモデル一式 |
+| フロア／案内／注文／提供／会計 | 含む（Operate） |
+| 人数・メモ・TO・取消・数量 | 含む |
+| 支払手段・未提供確認・本日集計 | 含む |
+| 税率・メニュー・フロア配置 UI | Inspect のみ |
+| Firebase Auth / Firestore 同期 | 対象外（帯 C 候補。README に明記） |
+| 日締め・赤伝 | 対象外（今回 carve-out 外。run-log 参照） |
+| レシート HW | 対象外 |
+| 顧客店舗ブランド | 除外（WELT に置換） |
+| 本番データ・秘密 | 除外 |
 
-説明文の正本: [`docs/pitch.md`](./docs/pitch.md)
+## ドキュメント
 
-## ハブ
+| ファイル | 内容 |
+|---|---|
+| [`docs/pitch.md`](./docs/pitch.md) | 貼り付け用短文 |
+| [`docs/carve-out.md`](./docs/carve-out.md) | 切り出し合意 |
+| [`docs/capabilities.md`](./docs/capabilities.md) | TIPS |
+| [`docs/data-model.md`](./docs/data-model.md) | 構造の証拠 |
+| [`docs/rebuild-run-log.md`](./docs/rebuild-run-log.md) | 手順走行メモ |
 
-目次: [vvelt-portfolio](https://github.com/vvelt-xyz/vvelt-portfolio)
+ハブ: [vvelt-portfolio](https://github.com/vvelt-xyz/vvelt-portfolio)
